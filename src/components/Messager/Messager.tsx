@@ -3,7 +3,8 @@ import { MessagerIn } from "../../interfaces/Message";
 import axios from "axios";
 import styles from "./styles.module.scss";
 import { TranslatorIn } from "../../interfaces/Translator";
-import spinner from "../../assets/90-ring.svg";
+import spinner from "../../assets/Eclipse-0.6s-214px.svg";
+import TextSpeech from "../TextSpeech/TextSpeech";
 
 export const Messager = () => {
   const [message, setMessage] = useState<MessagerIn | null>(null);
@@ -12,8 +13,6 @@ export const Messager = () => {
     translatedText: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
-
-  // const phrasesArray = [];
 
   async function translateMessage() {
     if (message === null) {
@@ -50,19 +49,27 @@ export const Messager = () => {
 
   return (
     <div className={styles.container}>
-      <textarea
-        placeholder="Enviar frase para traduzir"
-        onChange={(e) => setMessage({ message: e.target.value })}
-      />
-      <button onClick={translateMessage}>Traduzir</button>
-      {loading ? (
-        <img src={spinner} alt="Loading..." />
-      ) : (
-        <textarea
-          value={translator ? translator.data.translatedText : ""}
-          readOnly
-        />
-      )}
+      <div className={styles.wrapper}>
+        <div className={styles.leftBox}>
+        <TextSpeech text={message?.message} />
+          <textarea
+            placeholder="Enviar frase em inglês para traduzir"
+            onChange={(e) => setMessage({ message: e.target.value })}
+          />
+        </div>
+        <button onClick={translateMessage} className={styles.translateButton}>Traduzir</button>
+        {loading ? (
+          <img src={spinner} alt="Loading..." />
+        ) : (
+          <div className={styles.boxTranslated}>
+            <TextSpeech text={translator.data.translatedText} />
+            <textarea
+              value={translator ? translator.data.translatedText : ""}
+              readOnly
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
