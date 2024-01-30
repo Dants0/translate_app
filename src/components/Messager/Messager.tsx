@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 import { TranslatorIn } from "../../interfaces/Translator";
 import spinner from "../../assets/Eclipse-0.6s-214px.svg";
 import TextSpeech from "../TextSpeech/TextSpeech";
+import { Copy } from "lucide-react";
 
 export const Messager = () => {
   const [message, setMessage] = useState<MessagerIn | null>(null);
@@ -13,6 +14,7 @@ export const Messager = () => {
     translatedText: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const [copyTranslations, setCopyTranslations] = useState(false);
 
   async function translateMessage() {
     if (message === null) {
@@ -47,26 +49,40 @@ export const Messager = () => {
     }
   }
 
+  const copyToClipboard = () => {
+    const textToCopy = translator.data.translatedText;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopyTranslations(true);
+    });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.leftBox}>
-        <TextSpeech text={message?.message} />
+          <TextSpeech text={message?.message} />
           <textarea
             placeholder="Enviar frase em inglês para traduzir"
             onChange={(e) => setMessage({ message: e.target.value })}
           />
         </div>
-        <button onClick={translateMessage} className={styles.translateButton}>Traduzir</button>
+        <button onClick={translateMessage} className={styles.translateButton}>
+          Traduzir
+        </button>
         {loading ? (
           <img src={spinner} alt="Loading..." />
         ) : (
           <div className={styles.boxTranslated}>
             <TextSpeech text={translator.data.translatedText} />
+            <Copy
+              onClick={copyToClipboard}
+              className={styles.copyTranslatedText}
+            />
+            {!copyTranslations ? ( '' ) : ( <span>Texto Copiado!</span> )}
             <textarea
               value={translator ? translator.data.translatedText : ""}
               readOnly
-            />
+            ></textarea>
           </div>
         )}
       </div>
