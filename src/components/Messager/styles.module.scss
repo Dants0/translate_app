@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    height: auto;
+    align-items: center;
+    textarea, img{
+        font-size: 16px;
+        font-family: 'Bai Jamjuree', sans-serif;
+        height: 50%;
+        width: 25%;
+        border: none;
+        outline: none;
+        padding: 10px;
+        resize: none;
+        border-radius: 5px;
+        box-shadow: 0 0 2px 0 gray;
+    }
+    
+    button{
+        width: 25%;
+        height: 5%;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: 0 0 2px 0 gray;
+        border: none;
+        transition: all 0.2s ease-in-out;
+        font-family: 'Bai Jamjuree', sans-serif;
+        &:hover{
+            background-color: rgb(24, 185, 65);
+            color: white;
+        }
+    }
+
+    p{
+        color: white;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        gap: 10px;
+        textarea, img{
+            width: 90%;
+            height: 60vh;
+        }
+        button{
+            width: 50%;
+        }
+    }
+}
