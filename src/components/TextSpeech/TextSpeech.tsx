@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SpeechIn } from "../../interfaces/Speech";
 import { useEffect, useState } from "react";
 import styles from './styles.module.scss'

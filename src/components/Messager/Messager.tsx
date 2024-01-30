@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { MessagerIn } from "../../interfaces/Message";
 import axios from "axios";
@@ -6,6 +7,7 @@ import { TranslatorIn } from "../../interfaces/Translator";
 import spinner from "../../assets/Eclipse-0.6s-214px.svg";
 import TextSpeech from "../TextSpeech/TextSpeech";
 import { Copy } from "lucide-react";
+import { DarkThemeToggle } from "../DarkThemeToogle/DarkThemeToogle";
 
 export const Messager = () => {
   const [message, setMessage] = useState<MessagerIn | null>(null);
@@ -59,8 +61,10 @@ export const Messager = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
+        <DarkThemeToggle/>
         <div className={styles.leftBox}>
           <TextSpeech text={message?.message} />
+          <span>Linguagem: EN</span>
           <textarea
             placeholder="Enviar frase em inglês para traduzir"
             onChange={(e) => setMessage({ message: e.target.value })}
