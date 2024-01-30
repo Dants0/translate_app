@@ -67,7 +67,7 @@ const TextSpeech = ({ text }: SpeechIn) => {
   return (
     <div className={styles.textSpeech_container}>
       <label>
-        Volume:
+        Volume: {volume}
         <input
           type="range"
           min="0"
@@ -78,10 +78,10 @@ const TextSpeech = ({ text }: SpeechIn) => {
         />
       </label>
       <label>
-        Velocidade:
+        Velocidade: {rate}
         <input
           type="range"
-          min="0.5"
+          min="0.1"
           max="2"
           step="0.1"
           value={rate}
