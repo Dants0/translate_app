@@ -1,6 +1,42 @@
 .textSpeech_container {
     display: flex;
     gap: 20px;
+    width: auto;
+    .box{
+        display: flex;
+        width: auto;
+        label{
+            input[type=range]{
+                -webkit-appearance: none;
+                &::-webkit-slider-runnable-track{
+                    width: 300px;
+                    height: 5px;
+                    background: #ddd;
+                    border: none;
+                    border-radius: 3px;
+                }
+
+                &::-webkit-slider-thumb{
+                    -webkit-appearance: none;
+                    border: none;
+                    height: 16px;
+                    width: 16px;
+                    border-radius: 50%;
+                    background: goldenrod;
+                    margin-top: -4px;
+                }
+
+                &:focus{
+                    outline: none;
+                }
+
+                &:focus::-webkit-slider-runnable-track{
+                    background-color: #ccc;
+                }
+
+            }
+        }
+    }
 
     .buttons {
         border: none;
@@ -35,7 +71,24 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-
+        .box{
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            label{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+                padding: 2px;
+                input[type=range]{
+                    margin: 4px 0 6px 0;
+                    background: goldenrod;
+                }
+            }
+        }
         .buttons {
             width: 100%;
             display: flex;
@@ -49,37 +102,6 @@
                 justify-content: center;
                 border: 1px solid gray;
             }
-
-            button:nth-child(1) {
-                background-color: #27c227;
-                transition: all 0.3s ease-in-out;
-
-                &:hover {
-                    background-color: #11ec11ee;
-
-                }
-            }
-
-            button:nth-child(2) {
-                background-color: #eeee31;
-                transition: all 0.3s ease-in-out;
-
-                &:hover {
-                    background-color: #f3f310e0;
-
-                }
-            }
-
-            button:nth-child(3) {
-                background-color: #d62929;
-                transition: all 0.3s ease-in-out;
-
-                &:hover {
-                    background-color: #ff0000
-                }
-
-            }
-
         }
     }
 }

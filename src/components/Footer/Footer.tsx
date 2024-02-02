@@ -7,8 +7,8 @@ export const Footer = () => {
         Translate App
 
         <div className={styles.logos}>
-        <a href="https://github.com/Dants0/" target='_blank'><GitHubLogoIcon width={35} height={100}/></a>
-        <a href="https://www.linkedin.com/in/guilherme-góes-8b72531b0/" target='_blank'><LinkedInLogoIcon  width={35} height={100}/></a>
+        <a href="https://github.com/Dants0/" target='_blank'><GitHubLogoIcon width={35} height={100} color="white"/></a>
+        <a href="https://www.linkedin.com/in/guilherme-góes-8b72531b0/" target='_blank'><LinkedInLogoIcon  color="white" width={35} height={100}/></a>
         </div>
     </footer>
   )
